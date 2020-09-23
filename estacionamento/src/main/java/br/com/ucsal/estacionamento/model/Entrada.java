@@ -20,18 +20,18 @@ public class Entrada {
 	@Column(name = "codigo")
 	private Long codigo;
 
-	@Column(name = "placa")
+	@Column(name = "placa", nullable = false)
 	private String placa;
 	
 	@ManyToOne
-	@JoinColumn(name = "vaga_id")
+	@JoinColumn(name = "vaga_id", nullable = false)
 	private Vaga vaga;
 
-	@Column(name = "horario")
+	@Column(name = "horario", nullable = false)
 	private Date horario;
 
 	@ManyToOne
-	@JoinColumn(name = "usuario_id")
+	@JoinColumn(name = "usuario_id", nullable = false)
 	private Usuario usuario;
 	
 	public Entrada() {

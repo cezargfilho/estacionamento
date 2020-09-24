@@ -28,14 +28,22 @@ public class Veiculo {
 
 	@Column(name = "cor")
 	private String cor;
-	
+
 	public Veiculo() {
-		//construtor default
+		// construtor default
 	}
 
 	public Veiculo(String placa, Usuario usuario) {
 		this.placa = placa;
 		this.usuario = usuario;
+	}
+
+	public Veiculo(String placa, Usuario usuario, Fabricante fabricante, String modelo, String cor) {
+		this.placa = placa;
+		this.usuario = usuario;
+		this.fabricante = fabricante;
+		this.modelo = modelo;
+		this.cor = cor;
 	}
 
 	public String getPlaca() {

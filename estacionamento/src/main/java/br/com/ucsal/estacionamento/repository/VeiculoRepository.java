@@ -6,4 +6,6 @@ import br.com.ucsal.estacionamento.model.Veiculo;
 
 public interface VeiculoRepository extends JpaRepository<Veiculo, Long> {
 
+	Veiculo findByPlaca(String placa);
+
 }

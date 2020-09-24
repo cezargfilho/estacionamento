@@ -21,7 +21,7 @@ import br.com.ucsal.estacionamento.model.Usuario;
 import br.com.ucsal.estacionamento.repository.UsuarioRepository;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/usuarios")
 public class UsuarioController {
 	
 	@Autowired
@@ -42,7 +42,7 @@ public class UsuarioController {
 		
 		usuarioRepository.save(usuario);
 
-		URI uri = uriBuilder.path("/usuarios/{id}").buildAndExpand(usuario.getCodigo()).toUri();
+		URI uri = uriBuilder.path("/detalhe/{id}").buildAndExpand(usuario.getCodigo()).toUri();
 		return ResponseEntity.created(uri).body(new UsuarioDto(usuario));
 	}
 

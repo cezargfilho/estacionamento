@@ -17,7 +17,7 @@ import br.com.ucsal.estacionamento.model.enums.Situacao;
 public class Vaga {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "codigo")
 	private Long codigo;
 

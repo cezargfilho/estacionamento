@@ -27,7 +27,7 @@ public class Entrada {
 	@JoinColumn(name = "vaga_id", nullable = false)
 	private Vaga vaga;
 
-	@Column(name = "horario", nullable = false)
+	@Column(name = "horario")
 	private Date horario;
 
 	@ManyToOne

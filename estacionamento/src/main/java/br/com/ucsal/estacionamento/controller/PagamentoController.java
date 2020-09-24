@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.ucsal.estacionamento.controller.dto.EntradaDto;
 import br.com.ucsal.estacionamento.model.Pagamento;
 import br.com.ucsal.estacionamento.repository.PagamentoRepository;
 
@@ -29,7 +28,7 @@ public class PagamentoController {
 	}
 
 	@PostMapping(path = "/cadastrar")
-	public ResponseEntity<EntradaDto> cadastrar() {
+	public ResponseEntity<Pagamento> cadastrar() {
 		/*
 		 * TODO: Implementar calculo de pagamento para HORISTA e MENSALISTA
 		 * 

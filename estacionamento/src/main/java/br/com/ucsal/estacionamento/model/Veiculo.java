@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Veiculo {
 
 	@Id
-	@Column(name = "placa", nullable = false)
+	@Column(name = "placa", nullable = false, length = 7)
 	private String placa;
 
 	@ManyToOne

@@ -37,11 +37,31 @@ public class VeiculoForm {
 	public String getCor() {
 		return cor;
 	}
-	
+
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
+
+	public void setCpfUsuario(String cpfUsuario) {
+		this.cpfUsuario = cpfUsuario;
+	}
+
+	public void setNomeFabricante(String nomeFabricante) {
+		this.nomeFabricante = nomeFabricante;
+	}
+
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+
+	public void setCor(String cor) {
+		this.cor = cor;
+	}
+
 	public Veiculo converter(FabricanteRepository fabRepository, UsuarioRepository userRepository) {
 		Usuario usuario = userRepository.findByCpf(this.cpfUsuario);
 		Fabricante fabricante = fabRepository.findByNome(this.nomeFabricante);
-		
+
 		return new Veiculo(this.placa, usuario, fabricante, this.modelo, this.cor);
 	}
 

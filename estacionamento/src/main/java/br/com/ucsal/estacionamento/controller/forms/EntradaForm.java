@@ -13,30 +13,42 @@ public class EntradaForm {
 
 	private String placa;
 
-	private Integer numeroVaga;
+	private String vaga;
 
-	private String cpfUsuario;
+	private String cpf;
 
 	public String getPlaca() {
 		return placa;
 	}
 
-	public Integer getVaga() {
-		return numeroVaga;
+	public String getVaga() {
+		return vaga;
 	}
 
-	public String getUsuario() {
-		return cpfUsuario;
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
+
+	public void setVaga(String vaga) {
+		this.vaga = vaga;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public Entrada converter(UsuarioRepository userRepository, VagaRepository vagaRepository) {
-		Usuario usuario = userRepository.findByCpf(this.cpfUsuario);
-		Optional<Vaga> optional = vagaRepository.findById(new Long(this.numeroVaga));
+		Usuario usuario = userRepository.findByCpf(this.cpf);
+		Optional<Vaga> optional = vagaRepository.findById(Long.parseLong(this.vaga));
 
 		if (optional.isPresent()) {
 			Vaga vaga = optional.get();
 			if (usuario.getTipo().equalsIgnoreCase("mensalista")) {
-				return new Entrada(this.placa, vaga, null, usuario);
+				return new Entrada(this.placa, vaga, new Date(), usuario);
 			}
 			return new Entrada(this.placa, vaga, new Date(), usuario);
 		}

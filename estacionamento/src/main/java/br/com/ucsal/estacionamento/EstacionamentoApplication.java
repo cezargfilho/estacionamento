@@ -24,16 +24,12 @@ public class EstacionamentoApplication {
 	}
 
 	@Bean
-	public CommandLineRunner loadData(
-			UsuarioRepository userRepository, 
-			FabricanteRepository fabRepository,
-			VagaRepository vagaRepository, 
-			PrecoRepository precoRepository) {
+	public CommandLineRunner loadData(UsuarioRepository userRepository, FabricanteRepository fabRepository,
+			VagaRepository vagaRepository, PrecoRepository precoRepository) {
 
-		return (args) -> {
-			// Criacao de usuario padrao HORISTA
+		return (args) -> { // Criacao de usuario padrao HORISTA
 			userRepository.save(
-					new Usuario("USUARIO HORISTA", "000000000-00", null, null, TipoUsuario.HORISTA.getValor(), null));
+					new Usuario("USUARIO HORISTA", "00000000000", null, null, TipoUsuario.HORISTA.getValor(), null));
 
 			// Criacao dos fabricantes pre definidos
 			fabRepository.save(new Fabricante("FIAT"));

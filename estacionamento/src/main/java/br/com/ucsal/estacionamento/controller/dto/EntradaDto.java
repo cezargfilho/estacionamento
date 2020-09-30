@@ -57,7 +57,7 @@ public class EntradaDto {
 	}
 
 	private String dataConverter(Date horario) {
-		return new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(horario);
+		return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(horario);
 	}
 
 }

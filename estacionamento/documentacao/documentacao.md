@@ -1,4 +1,3 @@
-
 # Documentação
 
 Documentação do projeto de estacionamento da matéria de Tópicos Avançados em Banco de Dados, Universidade Católica do Salvador.
@@ -30,12 +29,12 @@ JAR:	```mvn package```
   "nome": "Cezar Gonzalez Filho",
   "cpf": "88888888888",
   "dataNascimento": "21/09/1996",
-  "telefone": "71990000000",
+  "telefone": "71991734603",
   "tipo": "MENSALISTA",
   "endereco": {
-    "cep": "40270-000",
+    "cep": "40270-240",
     "rua": "Rua XXXXXX",
-    "numero": "000",
+    "numero": "540",
     "cidade": "Salvador",
     "estado": "BA",
     "pais": "Brasil"
@@ -58,10 +57,11 @@ JAR:	```mvn package```
 3. Template JSON:
 ```
 {
-  "placa": "XXXXXXX",
-  "cpfUsuario": "88888888888",
+  "placa": "JQYO718",
+  "cpfUsuario": "00000000000",
   "nomeFabricante": "FIAT",
-  "modelo": "Branca"
+  "modelo": "Palio",
+  "cor": "Branca" 
 }
 ```
 - LISTAR
@@ -80,9 +80,9 @@ JAR:	```mvn package```
 3. Template JSON:
 ```
 {
-  "placa": "XXXXXXX",
-  "numeroVaga": "20",
-  "cpfUsuario": "88888888888"
+  "placa": "JQYO718",
+  "vaga": 20,
+  "cpf": "00000000000"
 }
 ```
 - LISTAR
@@ -92,3 +92,25 @@ JAR:	```mvn package```
 - DETALHAR
 1. Método: /GET
 2. URL: /entrada/detalhe/**{id}**
+
+**PAGAMENTO**
+
+- CADASTRAR
+1. Método: /POST
+2. URL: /pagamento/cadastrar
+3. Template JSON:
+```
+{
+  "precoId": "10",
+  "qtdHoras": "8",
+  "cpfUsuario": "00000000000",
+  "vaga": "20"
+}
+```
+- LISTAR
+1. Método: /GET
+2. URL: /pagamento/listar
+
+- DETALHAR
+1. Método: /GET
+2. URL: /pagamento/detalhe/**{id}**

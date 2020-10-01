@@ -1,4 +1,3 @@
-<<<<<<< estacionamento/src/main/java/br/com/ucsal/estacionamento/EstacionamentoApplication.java
 package br.com.ucsal.estacionamento;
 
 import org.springframework.boot.CommandLineRunner;

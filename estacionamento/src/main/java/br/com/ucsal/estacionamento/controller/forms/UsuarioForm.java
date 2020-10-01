@@ -46,6 +46,30 @@ public class UsuarioForm {
 		return endereco;
 	}
 
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public void setDataNascimento(String dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public void setEndereco(EnderecoForm endereco) {
+		this.endereco = endereco;
+	}
+
 	public Usuario converter() {
 		Date data = null;
 		try {

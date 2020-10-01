@@ -28,9 +28,9 @@ public class UsuarioController {
 	private UsuarioRepository usuarioRepository;
 
 	@GetMapping(path = "/listar")
-	public List<Usuario> listar() {
+	public List<UsuarioDto> listar() {
 		List<Usuario> usuarios = usuarioRepository.findAll();
-		return usuarios;
+		return UsuarioDto.converter(usuarios);
 	}
 
 	@PostMapping(path = "/cadastrar/mensalista")
@@ -47,10 +47,10 @@ public class UsuarioController {
 	}
 
 	@GetMapping(path = "/detalhe/{id}")
-	public ResponseEntity<Usuario> detalhar(@PathVariable Long id) {
+	public ResponseEntity<UsuarioDto> detalhar(@PathVariable Long id) {
 		Optional<Usuario> optional = usuarioRepository.findById(id);
 		if (optional.isPresent()) {
-			return ResponseEntity.ok(optional.get());
+			return ResponseEntity.ok(new UsuarioDto(optional.get()));
 		}
 		return ResponseEntity.notFound().build();
 	}

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import br.com.ucsal.estacionamento.controller.dto.EntradaDto;
 import br.com.ucsal.estacionamento.controller.forms.EntradaForm;
 import br.com.ucsal.estacionamento.model.Entrada;
 import br.com.ucsal.estacionamento.repository.EntradaRepository;
@@ -34,27 +35,29 @@ public class EntradaController {
 	private VagaRepository vagaRepository;
 
 	@GetMapping(path = "/listar")
-	public List<Entrada> listar() {
+	public List<EntradaDto> listar() {
 		List<Entrada> entradas = entradaRepository.findAll();
-		return entradas;
+		return EntradaDto.converter(entradas);
 	}
 
 	@PostMapping(path = "/cadastrar")
-	public ResponseEntity<Entrada> cadastrar(@RequestBody EntradaForm form, UriComponentsBuilder uriBuilder) {
+	public ResponseEntity<EntradaDto> cadastrar(
+			@RequestBody EntradaForm form, 
+			UriComponentsBuilder uriBuilder) {
 
 		Entrada entrada = form.converter(usuarioRepository, vagaRepository);
 		entradaRepository.save(entrada);
 
 		URI uri = uriBuilder.path("/detalhe/{id}").buildAndExpand(entrada.getCodigo()).toUri();
 
-		return ResponseEntity.created(uri).body(entrada);
+		return ResponseEntity.created(uri).body(new EntradaDto(entrada));
 	}
 
 	@GetMapping(path = "/detalhe/{id}")
-	public ResponseEntity<Entrada> detalhar(@PathVariable Long id) {
+	public ResponseEntity<EntradaDto> detalhar(@PathVariable Long id) {
 		Optional<Entrada> optional = entradaRepository.findById(id);
 		if (optional.isPresent()) {
-			return ResponseEntity.ok(optional.get());
+			return ResponseEntity.ok(new EntradaDto(optional.get()));
 		}
 		return ResponseEntity.notFound().build();
 	}
